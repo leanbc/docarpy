@@ -16,7 +16,7 @@ It Extract, Transform and Loads data from the NYC yellow Taxis, starting from 20
 
 It creates a cluster with a postgres database and Airflow.
 
-# If you want to connect to the Postgres Database form your local machine these are the credentials:
+## If you want to connect to the Postgres Database form your local machine these are the credentials:
 
 
 ```
