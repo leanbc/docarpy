@@ -22,3 +22,4 @@ supra-linear-projection.iml
 *.ipynb_checkpoints
 /data/postgres/*
 /data/trip_data/*
+!.gitignore
