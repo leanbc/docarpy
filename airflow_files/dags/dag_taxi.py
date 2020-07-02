@@ -15,7 +15,7 @@ from python_callables.import_files_into_postgres import main, dim_table, run_sql
 
 args = {
     'owner': 'airflow',
-    'start_date': days_ago(2)}
+    'start_date': days_ago(0)}
 
 
 dag = DAG(
@@ -43,59 +43,60 @@ importing_zones_from_S3=PythonOperator(dag=dag,
 #                             python_callable=run_sql,
 #                             op_kwargs={'file_path': './sql/DML/popular_destinations_monthly.sql'})
 
+postgres_conn_id='postgres_airflow'
 
 create_stg_taxis_data= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='create_stg_taxis_data',
     sql='DDL/create_stg_taxis_data.sql'
     )
 
 staging_taxis_data= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='staging_taxis_data',
     sql='DML/staging_taxis_data.sql'
     )
 
 create_table_popular_destination_zones= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='create_table_popular_destination_zones',
     sql='DDL/create_table_popular_destination_zones.sql'
     )
 
 popular_destinations_zones_passengers= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='popular_destinations_zones_passengers',
     sql='DML/popular_destinations_zones_passengers.sql'
     )
 
 create_table_popular_destination_borough_rides= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='create_table_popular_destination_borough_rides',
     sql='DDL/create_table_popular_destination_borough_rides.sql'
     )
 
 popular_destinations_borough_rides= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='popular_destinations_borough_rides',
     sql='DML/popular_destinations_borough_rides.sql'
     )
 
 history_table_borough_rides= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='history_table_borough_rides',
     sql='DML/history_table_borough_rides.sql'
     )
 
 history_table_zones_passengers= PostgresOperator(
     dag=dag,
-    postgres_conn_id='postgres_default',
+    postgres_conn_id=postgres_conn_id,
     task_id='history_table_zones_passengers',
     sql='DML/history_table_zones_passengers.sql'
     )

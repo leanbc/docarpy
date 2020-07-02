@@ -3,9 +3,19 @@ CURRENT_DIR_NAME:=`pwd | xargs basename`
 
 _start_cluster:
 	( \
-	docker-compose up -d ; \
+	docker-compose up -d postgres; \
+	echo Starting postgres database; \
+	sleep 30; \
+	echo Starting Airflow; \
+	docker-compose up initdb; \
+	sleep 20; \
+	docker-compose up webserver scheduler; \
 	)
 
+_create_postgres_connetion:
+	( \
+	docker-compose exec webserver airflow connections -a --conn_id postgres_airflow --conn_type postgres --conn_host postgres --conn_login airflow --conn_password airflow --conn_port 5432; \
+	)
 
 _stop_cluster:
 	( \
