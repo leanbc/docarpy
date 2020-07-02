@@ -38,7 +38,7 @@ export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ### 2. Start up the cluster:
-Go to the roo of the directory and run :
+Go to the root of the directory and run :
 ```
 make _start_cluster
 ```
