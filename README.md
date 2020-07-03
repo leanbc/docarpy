@@ -47,7 +47,7 @@ It will install all the depencies, may take several minutes.
 
 ### 3. Create a connection in Airflow to be able to run Postgres Operators against your database.
 
-Once the step to is done, you will see the Airflow logo and you will be able to access the Airlfow IU on http://localhost:8080/.
+Once the previous step is done, you will see the Airflow logo and you will be able to access the Airlfow IU on http://localhost:8080/.
 Go to another terminal and go to the root of the directry again and run.
 
 ```
