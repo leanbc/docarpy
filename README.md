@@ -78,6 +78,6 @@ nyc_tlc.popular_destination_zones
 Once data is inserted you can query from the root directory via:
 
 ```
-make _get_data TABLE=popular_destination_zones PICKUP=Alphabet City MONTH=2019-08-01
+make _get_data TABLE=popular_destination_zones PICKUP=Astoria MONTH=2019-08-01
 make _get_data TABLE=popular_destination_borough_rides PICKUP=Queens MONTH=2019-08-01
 ```
